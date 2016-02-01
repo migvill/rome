@@ -73,6 +73,10 @@
   margin-top: 5px;
   min-width: 80px;
 }
+.rd-time.rd-time--top {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
 .rd-time-list {
   display: none;
   position: absolute;
