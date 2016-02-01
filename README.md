@@ -83,6 +83,7 @@ Option             | Description
 `time`             | The calendar shows the current time and allows you to change it using a dropdown
 `timeFormat`       | Format string used to display the time on the calendar
 `timeInterval`     | Seconds between each option in the time dropdown
+`timeOnTop`        | Indicates whether to place the time picker at the top or bottom of the calendar
 `timeValidator`    | Function to validate that a given time is considered valid. Receives a native `Date` parameter.
 `weekdayFormat`    | Format used to display weekdays. Takes `min` _(Mo)_, `short` _(Mon)_, `long` _(Monday)_, or an array with seven strings of your choosing.
 `weekStart`        | Day considered the first of the week. Range: Sunday `0` - Saturday `6`
@@ -146,6 +147,7 @@ If you don't set an option, the default will be used. You can [look up the defau
   "time": true,
   "timeFormat": "HH:mm",
   "timeInterval": 1800,
+  "timeOnTop": false,
   "timeValidator": Function.prototype,
   "weekdayFormat": "min",
   "weekStart": moment().weekday(0).day()

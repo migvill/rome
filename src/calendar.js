@@ -149,8 +149,14 @@ function calendar (calendarOptions) {
       return;
     }
     rendered = true;
-    renderDates();
-    renderTime();
+    /* swap render order */
+    if (o.timeOnTop) {
+      renderTime();
+      renderDates();
+    } else {
+      renderDates();
+      renderTime();
+    }
     api.emit('render');
   }
 
@@ -202,6 +208,12 @@ function calendar (calendarOptions) {
     if (!o.time || !o.timeInterval) {
       return;
     }
+
+    /* add time position modifier */
+    if (o.timeOnTop) {
+        o.styles.time = o.styles.time + ' ' + o.styles.time + '--top';
+    }
+
     var timewrapper = dom({ className: o.styles.time, parent: container });
     time = dom({ className: o.styles.selectedTime, parent: timewrapper, text: ref.format(o.timeFormat) });
     crossvent.add(time, 'click', toggleTimeList);
