@@ -16,7 +16,10 @@
   "bugs": {
     "url": "https://github.com/bevacqua/rome/issues"
   },
-  "main": "dist/rome.js",
+  "main": [
+    "dist/rome.js",
+    "dist/rome.css",
+  ],
   "ignore": [
     ".*",
     "package.json",
