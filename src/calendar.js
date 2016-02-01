@@ -422,7 +422,7 @@ function calendar (calendarOptions) {
   }
 
   function emitValues () {
-    api.emit('data', getDateString());
+    api.emit('data', getDateString(), getMoment());
     api.emit('year', ref.year());
     api.emit('month', ref.month());
     api.emit('day', ref.day());
