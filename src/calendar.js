@@ -210,7 +210,7 @@ function calendar (calendarOptions) {
     }
 
     /* add time position modifier */
-    if (o.timeOnTop) {
+    if (o.timeOnTop && o.styles.time.indexOf('--top') === -1) {
         o.styles.time = o.styles.time + ' ' + o.styles.time + '--top';
     }
 
