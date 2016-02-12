@@ -6,10 +6,11 @@ rome(ivp, { initialValue: '2014-12-08 08:36' });
 rome(sm, { weekStart: 1 });
 rome(d, { time: false });
 rome(t, { date: false });
-rome(ttop, { timeOnTop: true });
+rome(ttop, { timeOnTop: true, closeButton: true });
 rome(aparent, { appendTo: 'parent' });
 rome(pscroll, { appendTo: 'parent', scrollWithParent: true });
-rome(pscroll, { closeButtont: true });
+rome(cls, { closeButton: true });
+rome(cls2, { closeButton: true, timeOnTop: true });
 rome(mms, { monthsInCalendar: 2 });
 
 var picker = rome(ind);

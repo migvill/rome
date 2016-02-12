@@ -50,7 +50,12 @@ function calendar (calendarOptions) {
 
   function init (initOptions) {
     o = defaults(initOptions || calendarOptions, api);
-    if (!container) { container = dom({ className: o.styles.container }); }
+    var containerClass = (o.styles.container + ' ' + getContainerClassModifiers()).trim(); /* do this before creating dom element */
+    if (!container) {
+      container = dom({ className: containerClass });
+    } else {
+      container.className = containerClass;
+    }
     weekdays = o.weekdayFormat;
     weekdayCount = weekdays.length;
     lastMonth = no;
@@ -144,11 +149,37 @@ function calendar (calendarOptions) {
     return changeOptions({ appendTo: o.appendTo });
   }
 
+  function getContainerClassModifiers() {
+    var plainClass = o.styles.container,
+        appendClasses = [],
+        addClassModifier = function(parentClass, plainClass, modifier) {
+          if (parentClass.indexOf(modifier) === -1) {
+              appendClasses.push(plainClass + modifier);
+          }
+        };
+
+    /* time position modifier */
+    if (o.timeOnTop && o.time) {
+      addClassModifier(o.styles.container, plainClass, '--time-on-top');
+    }
+    /* date only modifier */
+    if (!o.time) {
+      addClassModifier(o.styles.container, plainClass, '--date-only');
+    }
+    /* time only modifier */
+    if (!o.date) {
+      addClassModifier(o.styles.container, plainClass, '--time-only');
+    }
+
+    return appendClasses.join(' ').trim();
+  }
+
   function render () {
     if (rendered) {
       return;
     }
     rendered = true;
+    renderControls();
     /* swap render order */
     if (o.timeOnTop) {
       renderTime();
@@ -158,6 +189,14 @@ function calendar (calendarOptions) {
       renderTime();
     }
     api.emit('render');
+  }
+
+  function renderControls() {
+    /* show a close button */
+    if (o.closeButton && o.date) {
+      var close = dom({ className: o.styles.close, parent: container });
+      crossvent.add(close, 'click', hideCalendar);
+    }
   }
 
   function renderDates () {
@@ -207,11 +246,6 @@ function calendar (calendarOptions) {
   function renderTime () {
     if (!o.time || !o.timeInterval) {
       return;
-    }
-
-    /* add time position modifier */
-    if (o.timeOnTop && o.styles.time.indexOf('--top') === -1) {
-        o.styles.time = o.styles.time + ' ' + o.styles.time + '--top';
     }
 
     var timewrapper = dom({ className: o.styles.time, parent: container });

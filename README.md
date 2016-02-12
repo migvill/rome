@@ -67,6 +67,7 @@ Option             | Description
 `autoClose`        | When set to `true`, the calendar is auto-closed when picking a day _(or a time if `time: true` and `date: false`). A value of `'time'` will only auto-close the calendar when a time is picked.
 `autoHideOnBlur`   | Hides the calendar when focusing something other than the input field
 `autoHideOnClick`  | Hides the calendar when clicking away
+`closeButton`      | Display a close button when set to `true`
 `date`             | The calendar shows days and allows you to navigate between months
 `dateValidator`    | Function to validate that a given date is considered valid. Receives a native `Date` parameter.
 `dayFormat`        | Format string used to display days on the calendar
@@ -112,6 +113,7 @@ If you don't set an option, the default will be used. You can [look up the defau
   "autoClose": true,
   "autoHideOnBlur": true,
   "autoHideOnClick": true,
+  "closeButton": false,
   "date": true,
   "dateValidator": Function.prototype,
   "dayFormat": "DD",

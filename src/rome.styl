@@ -41,6 +41,25 @@
   display block
   content '\2192'
 
+.rd-close
+  float right
+  font-size 20px
+  right 0
+  position relative
+  top -5px
+
+.rd-close:after
+  content '\00D7'
+  display block
+
+.rd-close:hover
+  cursor pointer
+
+.rd-container.rd-container--time-on-top .rd-close
+  position absolute
+  right 10px
+  top 5px
+
 .rd-day-body
   cursor pointer
   text-align center
@@ -66,7 +85,7 @@
   margin-top 5px
   min-width 80px
 
-.rd-time.rd-time--top
+.rd-container--time-on-top .rd-time
   margin-top 0
   margin-bottom 5px
 
