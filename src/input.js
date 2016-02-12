@@ -41,7 +41,13 @@ function inputCalendar (input, calendarOptions) {
 
     eye = bullseye(api.container, input);
     api.on('data', updateInput);
-    api.on('show', eye.refresh);
+
+    /* if not attached to body */
+    if (o.appendTo.nodeName !== 'BODY') {
+      api.on('show', attachToAssociatedInput);
+    } else {
+      api.on('show', eye.refresh);
+    }
 
     eventListening();
     throttledTakeInput();
@@ -51,6 +57,25 @@ function inputCalendar (input, calendarOptions) {
     eventListening(true);
     eye.destroy();
     eye = null;
+  }
+
+  function attachToAssociatedInput() {
+    var assoc = api.associated,
+        left = assoc.offsetLeft,
+        top = assoc.offsetHeight + assoc.offsetTop;
+
+    /*
+     * force the parent node to be 'relative' so that the calendar
+     * scrolls with the input. this ensures the calendar attaches
+     * to the input even when it's inside scrolling div (e.g. overflow: scroll)
+     */
+    if (o.scrollWithParent) {
+      api.container.parentNode.style.position = 'relative'; 
+    }
+
+    /* attach element to the bottom of the associated input */
+    api.container.style.left = left + 'px';
+    api.container.style.top = top + 'px';
   }
 
   function eventListening (remove) {

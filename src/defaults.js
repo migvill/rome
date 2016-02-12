@@ -19,6 +19,10 @@ function defaults (options, cal) {
       throw new Error('Inline calendars must be appended to a parent node explicitly.');
     }
   }
+  if (o.scrollWithParent === no) { o.scrollWithParent = false; }
+  if (o.scrollWithParent && !isInput(cal.associated)) {
+    throw new Error('Can\'t force scrolling on inline calendar because it is not associated with an input');
+  }
   if (o.invalidate === no) { o.invalidate = true; }
   if (o.required === no) { o.required = false; }
   if (o.date === no) { o.date = true; }
@@ -33,6 +37,7 @@ function defaults (options, cal) {
       o.inputFormat = 'HH:mm';
     }
   }
+  if (o.closeButton === no) { o.closeButton = false; }
   if (o.initialValue === no) {
     o.initialValue = null;
   } else {

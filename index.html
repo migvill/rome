@@ -40,14 +40,16 @@ rome(input, { weekStart: 1 });
       </code>
     </pre>
   </div>
-  <div class='parent'>
-    <label for='d'>Pick a date: </label>
-    <input id='d' class='input' />
-    <pre>
-      <code>
-rome(input, { time: false });
-      </code>
-    </pre>
+  <div class='parent scrollable'>
+    <div class='tall'>
+      <label for='d'>Pick a date: </label>
+      <input id='d' class='input' readonly="" />
+      <pre>
+        <code>
+  rome(input, { time: false });
+        </code>
+      </pre>
+    </div>
   </div>
   <div class='parent'>
     <label for='t'>Pick a time: </label>
@@ -55,6 +57,50 @@ rome(input, { time: false });
     <pre>
       <code>
 rome(input, { date: false });
+      </code>
+    </pre>
+  </div>
+  <div class='parent'>
+    <label for='ttop'>Want the time to appear on top?</label>
+    <input id='ttop' class='input' />
+    <pre>
+      <code>
+rome(input, { timeOnTop: true });
+      </code>
+    </pre>
+  </div>
+  <div class='parent'>
+    <div class='inner scrollable'>
+      <div class='tall'>
+        <label for='aparent'>Append to parent:</label>
+        <input id='aparent' class='input' />
+      </div>
+    </div>
+    <pre>
+      <code>
+rome(input, { appendTo: 'parent' });
+      </code>
+    </pre>
+  </div>
+  <div class='parent'>
+    <div class='inner scrollable'>
+      <div class='tall'>
+        <label for='pscroll'>Force scrolling with parent:</label>
+        <input id='pscroll' class='input' />
+      </div>
+    </div>
+    <pre>
+      <code>
+rome(input, { appendTo: 'parent', scrollWithParent: true });
+      </code>
+    </pre>
+  </div>
+  <div class='parent'>
+    <label for='cls'>Close button:</label>
+    <input id='cls' class='input' />
+    <pre>
+      <code>
+rome(input, { closeButton: true });
       </code>
     </pre>
   </div>

@@ -79,6 +79,7 @@ Option             | Description
 `monthFormat`      | Format string used by the calendar to display months and their year
 `monthsInCalendar` | How many months get rendered in the calendar
 `required`         | Is the field required or do you allow empty values?
+`scrollWithParent` | Force the calendar to scroll with the parent it's attached to. Only available when `appendTo = 'parent'`. Warning: This forces the `parent` element to be `position: relative`
 `styles`           | CSS classes applied to elements on the calendar
 `time`             | The calendar shows the current time and allows you to change it using a dropdown
 `timeFormat`       | Format string used to display the time on the calendar
@@ -122,6 +123,7 @@ If you don't set an option, the default will be used. You can [look up the defau
   "monthFormat": "MMMM YYYY",
   "monthsInCalendar": 1,
   "required": false,
+  "scrollWithParent": false,
   "strictParse": false,
   "styles": {
     "back": "rd-back",
